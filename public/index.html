@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title></title>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<h1>Blague de ouf</h1>
+<img src="image/loading.gif" id="load">
+<audio id="audiolol" preload="true">
+<source src="audio/lolnoel.ogg" type="audio/ogg" />
+<source src="audio/lolnoel.mp3" type="audio/mpeg" />
+</audio>
+
+
+
+
+<div id="tweet"></div>
+<script>
+  var socket = io.connect('//');
+  socket.on('load', function (data) {
+    $("#load").hide();
+    addTweet(data.id);
+  });
+  socket.on('news', function (data) {
+    addTweet(data.id);
+  });
+  
+  function addTweet(id)
+  {
+    $("#tweet").prepend('<blockquote class="twitter-tweet"><p></p><a href="https://twitter.com/twitterapi/status/'+id+'"></a></blockquote><scri' +'pt src="//platform.twitter.com/widgets.js" charset="utf-8"></scri'+'pt>');
+    document.getElementById("audiolol").play();
+  }
+
+</script>
+</body>
+</html>
